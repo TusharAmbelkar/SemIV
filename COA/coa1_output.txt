@@ -1,0 +1,28 @@
+C:\Users\OWNER\Desktop\final sem 4>javac CC.java
+
+C:\Users\OWNER\Desktop\final sem 4>java CC
+Which operation would you like to do?
+1:Convert Decimal to Binary
+2:Convert Binary to Decimal
+3:Exit
+1
+Enter a decimal number :
+45.24
+The Decimal number entered is:45.24
+The Equivalent Binary number is:101101.0011110101110000101000111101011100001010001111010
+Which operation would you like to do?
+1:Convert Decimal to Binary
+2:Convert Binary to Decimal
+3:Exit
+2
+Enter a Binary number :
+10101.11
+The Binary number entered is:10101.11
+The Equivalent decimal number is21.75
+Which operation would you like to do?
+1:Convert Decimal to Binary
+2:Convert Binary to Decimal
+3:Exit
+3
+
+C:\Users\OWNER\Desktop\final sem 4>
