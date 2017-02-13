@@ -1,0 +1,412 @@
+151070031@ltsp85:~$ mysql -h 172.18.61.59 -u 151070031
+ERROR 1045 (28000): Access denied for user '151070031'@'172.18.39.85' (using password: NO)
+151070031@ltsp85:~$ mysql -h 172.18.61.59 -u 151070031 -p151070031
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1079
+Server version: 5.5.44-0ubuntu0.14.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use exp1a
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from instructor
+    -> ;
++-------+------------+-----------+--------+
+| id    | name       | dept_name | salary |
++-------+------------+-----------+--------+
+| 10101 | Srinivasan | Comp.Sci  |  65000 |
+| 12121 | Wu         | Finance   |  90000 |
+| 15151 | Mozart     | Music     |  40000 |
+| 22222 | Einstein   | Physics   |  95000 |
+| 32343 | El Said    | History   |  60000 |
+| 33456 | Gold       | Physics   |  87000 |
+| 45565 | Katz       | Comp.Sci  |  75000 |
+| 58583 | Califieri  | History   |  62000 |
+| 76543 | Singh      | Finance   |  80000 |
+| 76766 | Crick      | Biology   |  72000 |
+| 83821 | Brandt     | Comp.Sci  |  92000 |
+| 98345 | Kim        | Elec.Eng. |  80000 |
++-------+------------+-----------+--------+
+12 rows in set (0.01 sec)
+
+mysql> select * from takes;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 98345 | EE-181    |      1 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+15 rows in set (0.01 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc
+    -> ;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
+| 98345 | EE-181    |      1 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+15 rows in set (0.01 sec)
+
+mysql> delete from takes where ID = 98345;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc
+    -> ;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+14 rows in set (0.01 sec)
+
+mysql> Insert into takes values(98345,"EE-181",1,"Spring",2009);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> delete from takes where ID = 98345;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+14 rows in set (0.00 sec)
+
+mysql> Insert into takes values(98345,"EE-181",1,"Spring",2009);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> savepoint a
+    -> ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delete from takes where ID = 98345;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> rollback to a;
+ERROR 1305 (42000): SAVEPOINT a does not exist
+mysql> rollback to A;
+ERROR 1305 (42000): SAVEPOINT A does not exist
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback to A;
+ERROR 1305 (42000): SAVEPOINT A does not exist
+mysql> set autocommit =0
+    -> ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> savepoint a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> Insert into takes values(98345,"EE-181",1,"Spring",2009);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> savepoint a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delete from takes where ID = 98345;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> rollback to a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+14 rows in set (0.00 sec)
+
+mysql> Insert into takes values(98345,"EE-181",1,"Spring",2009);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> delete from takes where ID = 98345;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+14 rows in set (0.00 sec)
+
+mysql> concat("MySQL is ","fun");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'concat("MySQL is ","fun")' at line 1
+mysql> select concat("MySQL is ","fun");
++---------------------------+
+| concat("MySQL is ","fun") |
++---------------------------+
+| MySQL is fun              |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select concat_ws("---","MySQL is ","fun");
++------------------------------------+
+| concat_ws("---","MySQL is ","fun") |
++------------------------------------+
+| MySQL is ---fun                    |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select conv("5",10,2);
++----------------+
+| conv("5",10,2) |
++----------------+
+| 101            |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> elt(2,"Hi","Hello");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elt(2,"Hi","Hello")' at line 1
+mysql> select elt(2,"Hi","Hello");
++---------------------+
+| elt(2,"Hi","Hello") |
++---------------------+
+| Hello               |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo');
++------------------------------------------------+
+| FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') |
++------------------------------------------------+
+|                                              2 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+14 rows in set (0.00 sec)
+
+mysql> Insert into takes values(98345,"EE-181",1,"Spring",2009);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
+| 98345 | EE-181    |      1 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+15 rows in set (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from takes where ID = 98345;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+14 rows in set (0.00 sec)
+
+mysql> Insert into takes values(98345,"EE-181",1,"Spring",2009);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from takes where ID = 98345;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from takes order by ID asc,course_ID desc;
++-------+-----------+--------+----------+------+
+| ID    | course_ID | sec_id | semester | year |
++-------+-----------+--------+----------+------+
+| 10101 | CS-347    |      1 | Fall     | 2009 |
+| 10101 | CS-315    |      1 | Fall     | 2010 |
+| 10101 | CS-101    |      1 | Fall     | 2009 |
+| 12121 | FN-201    |      1 | Spring   | 2010 |
+| 15151 | MU-199    |      1 | Spring   | 2010 |
+| 22222 | PHY-101   |      1 | Fall     | 2009 |
+| 32343 | HIS-351   |      1 | Spring   | 2010 |
+| 45565 | CS-319    |      1 | Spring   | 2010 |
+| 45565 | CS-101    |      1 | Spring   | 2010 |
+| 76766 | BIO-301   |      1 | Summer   | 2010 |
+| 76766 | BIO-101   |      1 | Summer   | 2009 |
+| 83821 | CS-319    |      2 | Spring   | 2010 |
+| 83821 | CS-190    |      1 | Spring   | 2009 |
+| 83821 | CS-190    |      2 | Spring   | 2009 |
+| 98345 | EE-181    |      1 | Spring   | 2009 |
++-------+-----------+--------+----------+------+
+15 rows in set (0.00 sec)
+
+mysql> select FIND_IN_SET("AR","TUSHAR,AMBELKAR");
++-------------------------------------+
+| FIND_IN_SET("AR","TUSHAR,AMBELKAR") |
++-------------------------------------+
+|                                   0 |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select FIND_IN_SET("TUSHAR","TUSHAR,AMBELKAR");
++-----------------------------------------+
+| FIND_IN_SET("TUSHAR","TUSHAR,AMBELKAR") |
++-----------------------------------------+
+|                                       1 |
++-----------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> exit;
+Bye
+151070031@ltsp85:~$ 
+
