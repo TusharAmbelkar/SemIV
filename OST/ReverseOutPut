@@ -1,0 +1,43 @@
+151070031@ltsp159:~/Desktop$ /home/151070031/Desktop/Reverse.sh
+What would you like to do:
+
+1)Reverse two numbers:
+
+2)Swap two numbers:
+
+3)Exit.
+Enter appropriate choice:
+1
+Enter a number
+25987456
+65478952
+What would you like to do:
+
+1)Reverse two numbers:
+
+2)Swap two numbers:
+
+3)Exit.
+Enter appropriate choice:
+2
+Enter first number:
+2654
+Enter second number:
+1245
+Before Swapping....
+First Number:2654
+Second Number:1245
+After Swapping....
+First Number:1245
+Second Number:2654
+What would you like to do:
+
+1)Reverse two numbers:
+
+2)Swap two numbers:
+
+3)Exit.
+Enter appropriate choice:
+3
+151070031@ltsp159:~/Desktop$ 
+
