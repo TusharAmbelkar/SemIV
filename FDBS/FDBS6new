@@ -1,0 +1,511 @@
+| How good the day is.                       |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select concat("How ","good ","the ","day ","is!");
++--------------------------------------------+
+| concat("How ","good ","the ","day ","is!") |
++--------------------------------------------+
+| How good the day is!                       |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select concat_ws(" ","How","good","the","day","is!");
++-----------------------------------------------+
+| concat_ws(" ","How","good","the","day","is!") |
++-----------------------------------------------+
+| How good the day is!                          |
++-----------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select conv(5,4,2);
++-------------+
+| conv(5,4,2) |
++-------------+
+| 0           |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select conv(5,10,2);
++--------------+
+| conv(5,10,2) |
++--------------+
+| 101          |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select elt(2,"You","I","He");
++-----------------------+
+| elt(2,"You","I","He") |
++-----------------------+
+| I                     |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select field("is","How","good","the","day","is!");
++--------------------------------------------+
+| field("is","How","good","the","day","is!") |
++--------------------------------------------+
+|                                          0 |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select field("How","How","good","the","day","is!");
++---------------------------------------------+
+| field("How","How","good","the","day","is!") |
++---------------------------------------------+
+|                                           1 |
++---------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select find_in_set("ab","a,aa,ab,ba,bb,b");
++-------------------------------------+
+| find_in_set("ab","a,aa,ab,ba,bb,b") |
++-------------------------------------+
+|                                   3 |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select find_in_set("bc","a,aa,ab,ba,bb,b");
++-------------------------------------+
+| find_in_set("bc","a,aa,ab,ba,bb,b") |
++-------------------------------------+
+|                                   0 |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select hex(256)
+    -> ;
++----------+
+| hex(256) |
++----------+
+| 100      |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select hex(-255);
++------------------+
+| hex(-255)        |
++------------------+
+| FFFFFFFFFFFFFF01 |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> select insert("maam",3,5,"layal");
++----------------------------+
+| insert("maam",3,5,"layal") |
++----------------------------+
+| malayal                    |
++----------------------------+
+1 row in set (0.01 sec)
+
+mysql> select insert("maam",3,7,"layal");
++----------------------------+
+| insert("maam",3,7,"layal") |
++----------------------------+
+| malayal                    |
++----------------------------+
+1 row in set (0.01 sec)
+
+mysql> select instr("malayalam","ma");
++-------------------------+
+| instr("malayalam","ma") |
++-------------------------+
+|                       1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr("malayalam","la");
++-------------------------+
+| instr("malayalam","la") |
++-------------------------+
+|                       3 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lcase("HowDoYouDo");
++---------------------+
+| lcase("HowDoYouDo") |
++---------------------+
+| howdoyoudo          |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select left("HowDoYouDo",3);
++----------------------+
+| left("HowDoYouDo",3) |
++----------------------+
+| How                  |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select length("howdoyoudo");
++----------------------+
+| length("howdoyoudo") |
++----------------------+
+|                   10 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select locate("ma","malamalamalamalama",3);
++-------------------------------------+
+| locate("ma","malamalamalamalama",3) |
++-------------------------------------+
+|                                   5 |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lower("HowDoYouDo");
++---------------------+
+| lower("HowDoYouDo") |
++---------------------+
+| howdoyoudo          |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select lpad("Tushar",3,"Hi");
++-----------------------+
+| lpad("Tushar",3,"Hi") |
++-----------------------+
+| Tus                   |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> select lpad("Tushar",8,"Hi");
++-----------------------+
+| lpad("Tushar",8,"Hi") |
++-----------------------+
+| HiTushar              |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select lpad("Tushar",9,"Hi");
++-----------------------+
+| lpad("Tushar",9,"Hi") |
++-----------------------+
+| HiHTushar             |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> select lpad("Tushar",19,"Hi");
++------------------------+
+| lpad("Tushar",19,"Hi") |
++------------------------+
+| HiHiHiHiHiHiHTushar    |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ltrim("  babsak");
++-------------------+
+| ltrim("  babsak") |
++-------------------+
+| babsak            |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select make_set(1212123,'a','b','cd');
++--------------------------------+
+| make_set(1212123,'a','b','cd') |
++--------------------------------+
+| a,b                            |
++--------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select make_set(12,'a','b','cd');
++---------------------------+
+| make_set(12,'a','b','cd') |
++---------------------------+
+| cd                        |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select make_set('1.2.3','a','b','cd');
++--------------------------------+
+| make_set('1.2.3','a','b','cd') |
++--------------------------------+
+| a                              |
++--------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select make_set('1,2,3','a','b','cd');
++--------------------------------+
+| make_set('1,2,3','a','b','cd') |
++--------------------------------+
+| a                              |
++--------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select oct(a);
+ERROR 1054 (42S22): Unknown column 'a' in 'field list'
+mysql> select oct("a");
++----------+
+| oct("a") |
++----------+
+| 0        |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select oct(5);
++--------+
+| oct(5) |
++--------+
+| 5      |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select oct(15);
++---------+
+| oct(15) |
++---------+
+| 17      |
++---------+
+1 row in set (0.01 sec)
+
+mysql> select quote('Do it!!!'0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0' at line 1
+mysql> select quote('Do it!!!');
++-------------------+
+| quote('Do it!!!') |
++-------------------+
+| 'Do it!!!'        |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> select "123456" regexp "1%3%";
++------------------------+
+| "123456" regexp "1%3%" |
++------------------------+
+|                      0 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select "123456" regexp "1_3%";
++------------------------+
+| "123456" regexp "1_3%" |
++------------------------+
+|                      0 |
++------------------------+
+1 row in set (0.01 sec)
+
+mysql> select "123456" regexp "1%";
++----------------------+
+| "123456" regexp "1%" |
++----------------------+
+|                    0 |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> select "123456" regexp "1"
+    -> ;
++---------------------+
+| "123456" regexp "1" |
++---------------------+
+|                   1 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select "123456" regexp "1 3";
++-----------------------+
+| "123456" regexp "1 3" |
++-----------------------+
+|                     0 |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> select "123456" regexp "1*3";
++-----------------------+
+| "123456" regexp "1*3" |
++-----------------------+
+|                     1 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select "123456" regexp "1_3";
++-----------------------+
+| "123456" regexp "1_3" |
++-----------------------+
+|                     0 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select repeat("hamma ",3);
++--------------------+
+| repeat("hamma ",3) |
++--------------------+
+| hamma hamma hamma  |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select reverse("Voila");
++------------------+
+| reverse("Voila") |
++------------------+
+| alioV            |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select right("sdaggfuligalfgdguilfhuflhow",3);
++----------------------------------------+
+| right("sdaggfuligalfgdguilfhuflhow",3) |
++----------------------------------------+
+| how                                    |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select rpad("Tushar",3,"Hi");
++-----------------------+
+| rpad("Tushar",3,"Hi") |
++-----------------------+
+| Tus                   |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> select rpad("Tushar",9,"Hi");
++-----------------------+
+| rpad("Tushar",9,"Hi") |
++-----------------------+
+| TusharHiH             |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> select rpad("Tushar",8,"Hi");
++-----------------------+
+| rpad("Tushar",8,"Hi") |
++-----------------------+
+| TusharHi              |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> select rtrim("  babsak  ");
++---------------------+
+| rtrim("  babsak  ") |
++---------------------+
+|   babsak            |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select trim("  babsak  ");
++--------------------+
+| trim("  babsak  ") |
++--------------------+
+| babsak             |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select soundex("how");
++----------------+
+| soundex("how") |
++----------------+
+| H000           |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select soundex("How");
++----------------+
+| soundex("How") |
++----------------+
+| H000           |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select soundex("wow");
++----------------+
+| soundex("wow") |
++----------------+
+| W000           |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select soundex("know");
++-----------------+
+| soundex("know") |
++-----------------+
+| K500            |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select soundex("no");
++---------------+
+| soundex("no") |
++---------------+
+| N000          |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select space(5);
++----------+
+| space(5) |
++----------+
+|          |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select strcmp("Maths","maths");
++-------------------------+
+| strcmp("Maths","maths") |
++-------------------------+
+|                       0 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select substring_index("172:18:59:61:1234:456:",":",4);
++-------------------------------------------------+
+| substring_index("172:18:59:61:1234:456:",":",4) |
++-------------------------------------------------+
+| 172:18:59:61                                    |
++-------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select trim(leading "in" from "inappropriate");
++-----------------------------------------+
+| trim(leading "in" from "inappropriate") |
++-----------------------------------------+
+| appropriate                             |
++-----------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select ucase("How are you???");
++-------------------------+
+| ucase("How are you???") |
++-------------------------+
+| HOW ARE YOU???          |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select unhex("adfad");
++----------------+
+| unhex("adfad") |
++----------------+
+| 
+             |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select unhex("adf456");
++-----------------+
+| unhex("adf456") |
++-----------------+
+| ��V               |
++-----------------+
+1 row in set (0.01 sec)
+
+mysql> select unhex("4D7953514C");
++---------------------+
+| unhex("4D7953514C") |
++---------------------+
+| MySQL               |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select upper("How are you???");
++-------------------------+
+| upper("How are you???") |
++-------------------------+
+| HOW ARE YOU???          |
++-------------------------+
+1 row in set (0.01 sec)
+
+mysql> exit
+Bye
+151070031@ltsp137:~$ 
+
