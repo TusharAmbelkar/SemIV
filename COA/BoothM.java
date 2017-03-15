@@ -121,49 +121,54 @@ public class BoothM{
             l2=in2.length();
             if(l1>l2){
                 in2=makeEqualLength(in2,l1);
+                l2=in2.length();
             }
             else if(l1<l2){
                 in1=makeEqualLength(in1,l2);
+                l1=in1.length();
             }
             String S=twoComplement(in2);
-            System.out.println(S);
+            //System.out.println(S);
             String M=in2;
             String Q=in1;
             String Q1="0";
             String A="00";
             String P;
             A=makeEqualLength(A,l1);
-            System.out.print(A.length());
+            //System.out.print(A.length());
             for(i=0;i<M.length();i++){
                 String check=Q.charAt(l1-1) + Q1;
-                System.out.println(check);
+                //System.out.println(check);
                 if(check.equals("01")){
                     A=add(A,M);
-                    System.out.println(A);
+                    //System.out.println(A);
                     P=rightShift(A, Q, Q1);
-                    System.out.println(P);
+                    //System.out.println(P);
                     A=P.substring(0, l1);
                     Q=P.substring(l1, 2*l1);
                     Q1=new Character(P.charAt(P.length()-1)).toString();
                 }
                 else if(check.equals("10")){
                     A=add(A,S);
-                    System.out.println(A);
+                   // System.out.println(A);
                     P=rightShift(A, Q, Q1);
-                    System.out.println(P);
+                    //System.out.println(P);
                     A=P.substring(0, l1);
                     Q=P.substring(l1, 2*l1);
                     Q1=new Character(P.charAt(P.length()-1)).toString();
                 }
                 else{
                     P=rightShift(A, Q, Q1);
-                    System.out.println(P);
+                    //System.out.println(P);
                     A=P.substring(0, l1);
                     Q=P.substring(l1, 2*l1);
                     Q1=new Character(P.charAt(P.length()-1)).toString();
                 }
             }
-            System.out.println("The product is:"+A+Q);
+            System.out.println("The product is:"+A+Q+"\nWould you like to continue y/n");
+            String d=sc.next();
+            if(d.toLowerCase().charAt(0)=='n')
+                k=false;
         }
         while(k);
     }
